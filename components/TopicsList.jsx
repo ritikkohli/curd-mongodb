@@ -4,9 +4,11 @@ import RemoveBtn from "./RemoveBtn";
 
 const getTopics = async () => {
   try {
-      const res = await fetch("http://localhost:3000/api/topics",{
+      const res = await fetch("https://curd-mongodb.vercel.app/api/topics",{
         cache:'no-store',
       });
+
+      // const { topics } = await res.json();
 
       if(!res.ok){
         throw new Error('failed to load')

@@ -10,9 +10,13 @@ export async function POST(request){
 }
 
 export async function GET() {
-    await connectMongoDB();
-    const topics = await Topic.find();
-    return NextResponse.json({ topics });
+    try {
+        await connectMongoDB();
+        const topics = await Topic.find();
+        return NextResponse.json({ topics });
+    } catch (error) {
+        return NextResponse.json(error)
+    }
 }
 
 export async function DELETE(request){
